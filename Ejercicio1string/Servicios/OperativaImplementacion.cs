@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,6 +75,29 @@ namespace Ejercicio1string.Servicios
             return letraDNI;
         }
 
+        public int verificarNumero(int numerosDNI, string letraDNI, string DNI)
+        {
+            int valor;
+
+            string[] posicionLetraDNI = { "T", "R","W" , "A", "G","M", "Y", "F", "P", "D", "X", "P",
+                "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
+
+            int numeroDividido = numerosDNI % 23;
+
+            if (posicionLetraDNI[numeroDividido] == letraDNI)
+            {
+                Console.WriteLine("El DNI es valido: " + DNI);
+
+                valor = 0;
+            }
+            else
+            {
+                Console.WriteLine("El DNI no es valido, vuelva a escribirlo");
+
+                valor = 1;
+            }
+            return valor;
+        }
         public int pedirCodigoPostal()
         {
             Console.WriteLine("Escriba su codigo postal: ");
@@ -82,6 +106,24 @@ namespace Ejercicio1string.Servicios
             return codigoPostal;
         }
 
-        
+        public int verificarCodigoPostal(int codigoPostal, int valor)
+        {
+
+            int[] codigoPostales = { 41001, 41002, 41003, 41004, 41005, 41006, 41007, 41008, 41009, 41010,
+                41011, 41012, 41013, 41014, 41015, 41016, 41017, 41018, 41019, 41020, 41092};
+
+            for (int i = 0; i < codigoPostales.Length; i++)
+            {
+                if (codigoPostal == codigoPostales[i])
+                {
+                    Console.WriteLine("El codigo postal es de Sevilla: " + codigoPostal);
+
+                    valor = 0;
+
+                }
+            }
+
+            return valor;
+        }
     }
 }

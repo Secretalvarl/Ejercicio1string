@@ -21,5 +21,9 @@ namespace Ejercicio1string.Servicios
         public int pedirCodigoPostal();
 
         public int verificarNombre(string nombre, string apellido1, string apellido2, string nombreCompleto);
+
+        public int verificarNumero(int numerosDNI, string letraDNI, string DNI);
+
+        public int verificarCodigoPostal(int codigoPostal, int valor);
     }
 }

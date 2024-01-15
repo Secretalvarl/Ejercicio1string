@@ -16,10 +16,10 @@ namespace Ejercicio1string.Controladores
             string apellido1;
             string apellido2;
             string nombreCompleto;
-            int numerosDNI = alpha.pedidaNumerosDNI();
-            string letraDNI = alpha.pedidaLetraDNI();
-            string DNI = numerosDNI + letraDNI;
-            int codigoPostal = alpha.pedirCodigoPostal();
+            int numerosDNI;
+            string letraDNI;
+            string DNI;
+            int codigoPostal;
 
 
             do
@@ -29,37 +29,27 @@ namespace Ejercicio1string.Controladores
                 apellido2 = alpha.pedidaApellido2();
                 nombreCompleto = apellido1 + " " + apellido2 + ", " + nombre + ".";
                 valor = alpha.verificarNombre(nombre, apellido1, apellido2, nombreCompleto);
+
             } while (valor == 1);
 
 
-            string[] posicionLetraDNI = { "T", "R","W" , "A", "G","M", "Y", "F", "P", "D", "X", "P",
-                "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
+            do
+            {
+                numerosDNI = alpha.pedidaNumerosDNI();
+                letraDNI = alpha.pedidaLetraDNI();
+                DNI = numerosDNI + letraDNI;
+                valor = alpha.verificarNumero(numerosDNI, letraDNI, DNI);
+
+            } while (valor == 1);
+
+            do
+            {
+                codigoPostal = alpha.pedirCodigoPostal();
+                valor = alpha.verificarCodigoPostal(codigoPostal, valor);
+
+            }while(valor == 1);
+
             
-            int numeroDividido = numerosDNI % 23;
-
-            if (posicionLetraDNI[numeroDividido] == letraDNI)
-            {
-                Console.WriteLine("El DNI es valido: " + DNI);
-            }else
-            {
-                Console.WriteLine("El DNI no es valido, vuelva a escribirlo");
-            }
-
-
-            int[] codigoPostales = { 41001, 41002, 41003, 41004, 41005, 41006, 41007, 41008, 41009, 41010,
-                41011, 41012, 41013, 41014, 41015, 41016, 41017, 41018, 41019, 41020, 41092};
-
-            for (int i = 0; i < codigoPostales.Length; i++)
-            {
-                if (codigoPostal == codigoPostales[i])
-                {
-                    Console.WriteLine("El codigo postal es de Sevilla: " + codigoPostal);
-                }
-            }
-            
-
-
-
             string[] separar = nombreCompleto.Split(",");
 
             string apellidosJuntos = separar[0];
@@ -67,9 +57,64 @@ namespace Ejercicio1string.Controladores
 
             nombreCompleto.Count();
 
+            Console.WriteLine(nombreCompleto);
+
+
+            char decimoCaracter = nombreCompleto[9];
+
+            Console.WriteLine(decimoCaracter);
+
+
+            int buscarA = nombreCompleto.IndexOf('a');
+
+            if (buscarA != -1)
+            {
+                Console.WriteLine("La primera a se encuentra en la posicion: " + buscarA);
+            }
+            else
+            {
+                Console.WriteLine("No hay ninguna a");
+            }
 
 
 
+            int buscarR = nombreCompleto.IndexOf('r', 3);
+
+            if (buscarR != -1)
+            {
+                Console.WriteLine("La primera r se encuentra en la posicion: " + buscarR);
+            }
+            else
+            {
+                Console.WriteLine("No hay ninguna r");
+            }
+
+
+
+            char[] dividir = new char[nombre.Length];
+
+            for (int i = 0; i < nombre.Length; i++)
+            {
+                dividir[i] = nombre[i];
+            }
+
+            Console.WriteLine("La variable nombre separada por letras:");
+            foreach (char letra in dividir)
+            {
+                Console.Write(letra + " ");
+            }
+
+
+            int posicionARC = nombreCompleto.IndexOf("arc");
+
+            if (posicionARC != -1)
+            {
+                Console.WriteLine("arc esta en la posicion: " + posicionARC);
+            }
+            else
+            {
+                Console.WriteLine("No hay arc en el nombre completo");
+            }
         }
     }
 }
