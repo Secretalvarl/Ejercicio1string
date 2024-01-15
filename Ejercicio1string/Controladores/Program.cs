@@ -55,9 +55,9 @@ namespace Ejercicio1string.Controladores
             string apellidosJuntos = separar[0];
 
 
-            nombreCompleto.Count();
+            int tamaño = nombreCompleto.Length;
 
-            Console.WriteLine(nombreCompleto);
+            Console.WriteLine(tamaño);
 
 
             char decimoCaracter = nombreCompleto[9];
