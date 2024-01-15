@@ -78,7 +78,7 @@ namespace Ejercicio1string.Controladores
 
 
 
-            int buscarR = nombreCompleto.IndexOf('r', 3);
+            int buscarR = nombreCompleto.IndexOf('r', 3, 10);
 
             if (buscarR != -1)
             {
